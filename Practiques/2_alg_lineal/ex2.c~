@@ -1,0 +1,24 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+
+int main()
+{
+  double *A=NULL;
+  int n,i,j;
+  n=2;
+
+  //Definim la mida de la mastriu A
+  A = (double *)malloc(n*sizeof(double));
+  for (i=1;i<=n;i++)
+    {
+      A[i] = (double *)malloc(n*sizeof(double));
+    }
+  for (i=1;i<=n;i++)
+    {
+      for (j=1,j<=n;j++)
+	{
+	  printf("%lf",A[j][i]);
+	}
+    }
+}
