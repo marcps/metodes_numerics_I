@@ -1,6 +1,0 @@
-/* EXERCICI 1 - Mètodes Numèrics 1 - Marc Pascual i Solé NIUB: 16677043*/
-/*Aproximació del nombre e*/
-#include <stdio.h>
-#include <stdlib.h>
-
-
