@@ -16,14 +16,14 @@ void sist_tridiag(double *A,double *Ai,double *As,double *B,double *y, int n)
   //dim(Ai)=dim(As)=n-1
   //dim(y)=n
   //
-  for (k=1;k<=n-2;k++)//Fem eliminació gaussiana
+  for (k=0;k<=n-2;k++)//Fem eliminació gaussiana
     {  
-      mult=A[k]/Ai[k]; //multiplicador
+      mult=Ai[k]/A[k]; //multiplicador
 
       Ai[k]=mult;
-      A[k]=A[k]-mult*A[k-1];
-      As[k]=As[k]-mult*A[k-1];
-      B[k]=B[k]-B[k-1]*mult;
+      A[k+1]=A[k+1]-mult*As[k];
+      //As[k+1]=As[k+1]-mult*A[k]; -> NO CAL! pq la matriu és tridiagonal!
+      B[k+1]=B[k+1]-B[k]*mult;
     }
   //resolem
   y[n-1]=B[n-1]/A[n-1];
@@ -38,15 +38,15 @@ void sist_tridiag(double *A,double *Ai,double *As,double *B,double *y, int n)
 //Aquestes funcions s'han de modificar segons el problema
 double p(double x)
 {
-  return ;
+  return -2.0/x;
 }
 double q(double x)
 {
-  return ;
+  return 2.0/(x*x);
 }
 double r(double x)
 {
-  return ;
+  return sin(log(x))/(x*x);
 }
 //*******************************************************
 
@@ -56,8 +56,8 @@ int main()
   //INPUT: p(x), q(x), a,b, y(a), y(b)
   
   double *A, *Ai, *As, *B, *y;
-  int n;
-  double y0,yn,a,b,h,x1,x2;
+  int n,i,k,j;
+  double y0,yn,a,b,h,x1,x2,l;
   
   //es demanen els valors de frontera
   printf("Nombre de passes (n): ");
@@ -102,7 +102,9 @@ int main()
   //una vegada definits els vectors es procedeix a resoldre l'equació
   
   sist_tridiag(A,Ai,As,B,y,n);
+
   printf("\n\nSOLUCIONS:\n");
+  
   for (k=0;k<=n-1;k++)
     {
       printf("y[%d]=%lf\n",k,y[k]);
