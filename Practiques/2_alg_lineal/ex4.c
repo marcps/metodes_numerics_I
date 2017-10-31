@@ -71,7 +71,7 @@ int main()
   printf("Valor yn=y(b)= ");
   scanf("%lf", &yn);
   
-  h = (b-a)/(n+1.); //es calcula el pas h.
+  h = (b-a)/n; //es calcula el pas h.
 
   A = (double *)malloc(n*sizeof(double));
   Ai = (double *)malloc((n-1)*sizeof(double));
@@ -90,10 +90,9 @@ int main()
       x2=a+(l+2)*h; //Aquesta x es pel vector diagonal inferior, que va decalat
 
       if (i!=0) //ja definida
-	{
-	  B[i]=-h*h*r(x1);
-	}
-      
+		{
+	  		B[i]=-h*h*r(x1);
+		}
       A[i]=2.+h*h*q(x1);
       Ai[i]=-1.-h*p(x2)/2.;
       As[i]=-1.+h*p(x1)/2.;
@@ -109,5 +108,11 @@ int main()
     {
       printf("y[%d]=%lf\n",k,y[k]);
     }
+    
+  free(A);
+  free(Ai);
+  free(As);
+  free(B);
+  free(y);
   return 0;
 }

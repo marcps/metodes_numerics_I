@@ -42,7 +42,7 @@ void fact_LDL(double **A,int n)
   //********************************************
   for (j=1;j<=n-2;j++)
     {
-      tempSum=0;
+      tempSum=0.0;
       for (k=0;k<=j-1;k++)
 	     {
 	       tempSum += (A[j][k])*(A[j][k])*A[k][k];
@@ -52,7 +52,7 @@ void fact_LDL(double **A,int n)
       
       for(i=j+1;i<=n-1;i++)
       	{
-      	  for(k=0;k<=j-1)
+      	  for(k=0;k<=j-1;k++)
       	    {
       	      tempSum=A[i][k]*A[k][k]*A[j][k];
       	   }
@@ -61,7 +61,7 @@ void fact_LDL(double **A,int n)
     }
   //*******************************************
   tempSum=0.;
-  for (k=0;k<=n-2)
+  for (k=0;k<=n-2;k++)
     {
       tempSum+=A[n-1][k]*A[n-1][k]*A[k][k];
     }
@@ -73,10 +73,10 @@ int main()
   int i,j,k,n,m;
   double **A,**C,*b,*bt,*x,*y,*r;
   double temp; //variable temporal
-  printf("Nombre de files de la matriu A: ");
-  scanf("%d",m);
+  printf("Nombre de files de la matriu A i dimensió del vector b: ");
+  scanf("%d",&m);
   printf("Nombre de columnes de la matriu A: ");
-  scanf("%d",n);
+  scanf("%d",&n);
 
   //Es defineixen els punters de les matrius+++++++++++++++++++
   b=(double *)malloc(m*sizeof(double));
@@ -90,15 +90,21 @@ int main()
     {
       return 2;
     }
-  for (i=0;i<m-1)
+  for (i=0;i<m-1;i++)
     {
         A[i]=(double *)malloc(n*sizeof(double));
-        if (A[i]==NULL)return 3;
+        if (A[i]==NULL)
+        	{
+        		return 3;
+        	}
     }
-    for (i=0;i<n-1)
+    for (i=0;i<n-1;i++)
     {
         C[i]=(double *)malloc(n*sizeof(double));
-        if (C[i]==NULL)return 4;
+        if (C[i]==NULL)
+        	{
+        		return 4;
+        	}
     }
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //++++++++++++++++++++++++++ INPUT: A, b +++++++++++++++++++
@@ -106,14 +112,14 @@ int main()
   {
     for(j=0;j<=n-1;j++)
     {
-      printf("A[%d][%d]: ",i,j);
+      printf("A[%d][%d]: ",i+1,j+1);
       scanf("%lf",&A[i][j]);
     }
 
   }
   for (i=0;i<=m-1;i++)
   {
-      printf("b[%d]: ",i);
+      printf("b[%d]: ",i+1);
       scanf("%lf",&b[i]);
   }
   //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -121,12 +127,12 @@ int main()
 
   //es calcula la matriu C=A*A^t
   //Calcul de producte de matrius At(nxm)*A(mxn)=C(nxn)
-  for (i=0;i<=n-1)
+  for (i=0;i<=n-1;i++)
     {
-      for(j=0;j<=n-1)
+      for(j=0;j<=n-1;j++)
       {
         temp=0;
-        for(k=0;k<=m-1)
+        for(k=0;k<=m-1;k++)
         {
             temp=temp+A[k][i]*A[k][j];
         }
@@ -162,7 +168,7 @@ int main()
   backwards_subs(n,x,A,y);
 
   //s'imprimeizen les solucions
-  printf("\n\nSOLUCIONS\n")
+  printf("\n\nSOLUCIONS\n");
   for (i=0;i<=n-1;i++)
     {
       printf("x[%d]=%.15e\n",i,x[i]);
@@ -182,7 +188,7 @@ int main()
   //NORMA DE r
   for (i=0;i<=m-1;m++)
     {
-      temp=temp+x[i]*x[i]
+      temp=temp+x[i]*x[i];
     }
   printf("\nRESIDU en norma 2 de la solucio r^2: %.15e\n",temp);
   free(A);
