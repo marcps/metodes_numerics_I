@@ -1,7 +1,4 @@
-This code solves the root problem 6 of "Metodes Numerics I", a subject of The Faculty of Mathematics
-in Universitat de Barcelona
+Universitat de Barcelona 2017
+This collection of programs were developed by Marc Pascual i Solé for the subject of "Mètodes Numèrics I" of said university
 
-		p(x) = prod(from k=1, m)(x-k) + cx^m
-
-with m fixed and c small
-The code finds the roots of p(x) = 0 with the Newton-Raphson method.
+Disclaimer: Intended for academic purposes only
