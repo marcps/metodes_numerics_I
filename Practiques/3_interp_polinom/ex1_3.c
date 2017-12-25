@@ -18,18 +18,18 @@ void gaussian_elim(int n, double **A)
   for(j=0;j<=n;j++)
     {
       for(i=0;i<=n-1;i++)
-	{
-	  if(i>j)
 	    {
-	      m = A[i][j]/A[j][j];
-	      A[i][j]=m;
+	      if(i>j)
+	        {
+	          m = A[i][j]/A[j][j];
+	          A[i][j]=m;
 
-	      for(k=j+1;k<=n;k++)
-		{
-		  A[i][k] = A[i][k]-m*A[j][k];
-		}
+	          for(k=j+1;k<=n;k++)
+		        {
+		          A[i][k] = A[i][k]-m*A[j][k];
+		        }
+	        }
 	    }
-	}
     }
 }
 
@@ -45,9 +45,9 @@ void backwards_subs(int n, double *x,double **A)
     {
       sum=0.;
       for(j=i+1;j<=n-1;j++)
-	{
-	  sum += A[i][j]*x[j];
-	}
+	    {
+	      sum += A[i][j]*x[j];
+	    }
       x[i]=(A[i][n]-sum)/A[i][i];//pq la matriu es triangular
     }  
 }
