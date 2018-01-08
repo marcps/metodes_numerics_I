@@ -69,6 +69,13 @@ int main(void)
       b[j] = y[j]-m[j]*h[j+1]*h[j+1]/6;
       a[j] = (y[j+1]-y[j])/h[j+1]-(m[j+1]-m[j])*h[j+1]/6;
    }
+
+
+
+
+
+
+   
    /* avaluaci� del spline en M+1 punts equidistants */
    pas = (x[n]-x[0])/M;
    for (i=0; i<=M; i++) {

@@ -2,7 +2,8 @@
 #---------------------------------------------------------------------------------#
 #EXERCICI 2 - Interpolació: Marc Pascual i Solé - Universitat de Barcelona    	  # 
 #---------------------------------------------------------------------------------#
-#Programa que demana els punts de suport {(xi,fi)} per una n donada, i en calcula #
+#Programa que demana els punts de suport {(xi,fi)} diferents 2 a 2 per una n      #
+# donada, i en calcula                                                            #
 # les diferències dividides a dits punts. Ho fa definint un vector de n components#
 # i una matriu nxn on la 1a columna seran les ordenades de suport fi's. Una vegada#
 # hagi completat la matriu amb els coeficients, demana un punt per avaluar el     #

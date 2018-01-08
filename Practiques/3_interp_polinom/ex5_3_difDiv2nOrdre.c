@@ -30,6 +30,7 @@ int main(void)
 		ddfp=(foo(a+h)-2.*foo(a)+foo(a-h))/(h*h);
 		printf("%.5lf   %.10lf\n",h,ddfp);
 	}
+	
 
 
 

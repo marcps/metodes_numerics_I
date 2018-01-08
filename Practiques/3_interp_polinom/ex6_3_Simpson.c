@@ -12,7 +12,7 @@ int main (void)
 	int i,j,n;
 	double h,a,b,temp,x,T;
 
-	printf("\n    INTEGRACIÓ PER TRAPEZIS\n\n");
+	printf("\n    INTEGRACIÓ PER SIMPSON\n\n");
 	printf("n=");
 	scanf("%d",&n);
 	printf("a=");
@@ -22,14 +22,22 @@ int main (void)
 	//Calculem el pas
 
 	h=(b-a)/(double)n;
-
+ 	
 	temp=0.0;
 	for(i=1;i<n;i++)
-	{
+	{	
 		x=a+(double)i*h;
-		temp += foo(x);
+
+		if(i%2==0)
+		{
+			temp += 2.*foo(x);
+		}
+		else
+		{
+			temp += 4.*foo(x);
+		}
 	}
 
-	T=(h/2.)*(foo(a)+foo(b)+2.*temp);
-	printf("T(f,a,b)=%.10lf\n\n",T);
+	T=(h/3.)*(foo(a)+foo(b)+temp);
+	printf("S(f,a,b)=%.10lf\n\n",T);
 }
