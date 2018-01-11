@@ -1,3 +1,15 @@
+/*#################################################################################
+#---------------------------------------------------------------------------------#
+#EXERCICI 5 - Richardson: Marc Pascual i Solé - Universitat de Barcelona    	  # 
+#---------------------------------------------------------------------------------#
+#Programa que calcula la derivada d'una funció en un punt usant el mètode de Rich-#
+# ardson, fent servir una matriu. Primer de tot, calcula la primera columna de la #
+# matriu T fent servir la fòrmula de derivació centrada f' = [ f(a+h)-f(a-h) ]/2h #
+# amb una h progressivament més petita decrementada un factor donat "q".          #
+# Després, es calculen les demès columnes a partir de la primera amb el mètode de #
+# Richardson Tij = Ti-1,j-1 + [ Ti-1,j-1 - Ti,j-1]/[ q^2*j - 1 ].                 #
+# Finalment, s'imprimeixen els resultats.                                         #
+###################################################################################*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>

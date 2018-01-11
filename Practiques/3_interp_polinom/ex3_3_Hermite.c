@@ -1,3 +1,11 @@
+/*#################################################################################
+#---------------------------------------------------------------------------------#
+#EXERCICI 3-Interpolació de Hermite: Marc Pascual i Solé-Universitat de Barcelona #   	  
+#---------------------------------------------------------------------------------#
+#Programa que calcula el polinomi interpolador de Hermite, en el cas especial on  #
+# es donen per cada abicssa de suport, el valor de la funció i el de la seva deri-#
+# vada.                                                                           #
+###################################################################################*/
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -22,13 +30,13 @@ void dif_div_hermite(int n, double x[n-1],double y[n-1][n-1])
 			y[i][1]=(y[i+1][0]-y[i-1][0])/(x[i+1]-x[i-1]);
 		}
 	}
-    //RESTA D'ITERACIONS - Diferències Dividides
+    //RESTA D'ITERACIONS - Diferències Dividides per construcció del problema
 	for (j=2;j<n;j++)
 	{
 		for(i=0;i<n-j;i++)
 		{
 			y[i][j]=(y[i+1][j-1]-y[i][j-1])/(x[i+j]-x[i]);
-			printf("%d %d: %lf\n",i,j,y[i][j]);
+			printf("(%d,%d): %lf\n",i,j,y[i][j]);
 		}
 	}
 }
@@ -56,10 +64,12 @@ int main()
 	int i,j,n;
 	printf("Nombre de punts DIFERENTS: " );
 	scanf("%d",&n);
+	//En realitat hi ha el doble de punts (cadascun ve també amb el valor de la derivada!)
 	n=2*n;
 	double x[n-1],y[n-1][n-1];
 	double a,b,h,tempx,tempy;
 
+	// --------------------------------- USER INPUT ----------------------------------------
 	printf("\n\nEscriure les abcisses de suport:\n");
  	for(i=0;i<n;i++)
  		{
@@ -88,10 +98,13 @@ int main()
  			scanf("%lf",&y[i][0]);
  		}
  	}
+ 	//----------------------------------------------------------------------------------------
 
- 	/*---------------------------------------------------------------*/
+ 	//----------------------------------------------------------------------------------------
  	//Una vegada s'ha demanat tot L'INPUT, es passarà a fer diferències dividides:
  	dif_div_hermite(n,x,y);
+
+ 	//############################### STD OUTPUT #################################
 
  	printf("\n\n\n            MATRIU de HERMITE\n");
  	for(i=0;i<n;i++)
@@ -102,9 +115,10 @@ int main()
  		}
  		printf("\n");
  	}
+ 	//############################################################################
 
 
- /*##############################################################################*/
+ 	//################################ FILE OUTPUT ###############################
  	// Finalment s'escriuran els resultats en un fitxer
  	fp=fopen("res_ex3_3.dat","w");
  	a=x[0];
@@ -119,7 +133,7 @@ int main()
 
 	}
 	fclose(fp);
- /*###############################################################################*/
+ 	//##############################################################################
 
  	return 0;
 }
