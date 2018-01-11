@@ -4,13 +4,13 @@
 
 double foo(double x)
 {
-	return exp(x)-2;
+	return x*x + 3.*x + 2.;
 }
 
 double deriFoo(double x)
 {
 	//Ha d'ésser la derivada de la funció foo(x)
-	return exp(x);
+	return ;
 }
 
 int main(void)
